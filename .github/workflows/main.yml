@@ -46,7 +46,7 @@ jobs:
 
       # Install kubectl
       - name: Setup kubectl
-        uses: aws/setup-kubectl@v4
+        uses: azure/setup-kubectl@v4
 
       # Configure kubeconfig
       - name: Configure kubeconfig
