@@ -40,3 +40,21 @@ jobs:
           tags: |
             ankitwani29/my-image-name:latest
             ankitwani29/my-image-name:${{ github.run_number }}
+
+       - name: Setup kubectl
+        uses: azure/setup-kubectl@v4
+
+       - name: Configure kubeconfig
+  run: |
+    mkdir -p ~/.kube
+    echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
+
+    - name: Verify Cluster Connectivity
+  run: |
+    kubectl cluster-info
+    kubectl get nodes
+
+    - name: Deploy Application
+  run: |
+    kubectl apply -f k8s/deployment.yaml
+    kubectl apply -f k8s/service.yaml     
