@@ -54,7 +54,7 @@ jobs:
           mkdir -p ~/.kube
           echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
 
-     # Verify cluster access
+      # Verify cluster access
       - name: Verify Kubernetes Cluster
         run: |
           kubectl cluster-info
@@ -72,4 +72,3 @@ jobs:
           kubectl get deploy
           kubectl get pods -o wide
           kubectl get svc
-       
